@@ -15,4 +15,4 @@ The objective of our application is to provide a platform that allow students to
 </ul>
 
 <h2>Sequence Diagram</h2>
-![This is an image](/assets/images/seq diagram.png)
+![This is an image](https://myoctocat.com/assets/images/seq_diagram.png)
