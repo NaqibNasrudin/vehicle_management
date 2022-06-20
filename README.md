@@ -16,7 +16,7 @@ The objective of our application is to provide a platform that allow students to
   <li>Camera plugins for report purpose</li>
 </ul>
 
-Screen navigation & Implementation<br><br>
+# Screen navigation & Implementation<br><br>
 Landing Page <br>
 ![alt text](landing_mobile.png)
 
@@ -35,5 +35,5 @@ Report<br>
 
 
 
-Sequence Diagram
+# Sequence Diagram
 ![alt text](seq2.png)
