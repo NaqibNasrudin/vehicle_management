@@ -12,7 +12,7 @@ The objective of our application is to provide a platform that allow students to
 <ul>
   <li>CRUD Operation</li>
   <li>Admin Registration (MRC)</li>
-  <li></li>
 </ul>
 
-<h2></h2>
+<h2>Sequence Diagram</h2>
+![This is an image](/assets/images/seq diagram.png)
