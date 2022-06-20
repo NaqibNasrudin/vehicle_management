@@ -12,6 +12,7 @@ The objective of our application is to provide a platform that allow students to
 <ul>
   <li>CRUD Operation</li>
   <li>Admin Registration (MRC)</li>
+  <li>Search by Registration Number</li>
 </ul>
 
 <h2>Sequence Diagram</h2>
