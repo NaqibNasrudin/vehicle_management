@@ -16,4 +16,4 @@ The objective of our application is to provide a platform that allow students to
 </ul>
 
 <h2>Sequence Diagram</h2>
-![alt text](seq.png)
+![alt text](seq2.png)
