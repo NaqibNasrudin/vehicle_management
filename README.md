@@ -15,5 +15,6 @@ The objective of our application is to provide a platform that allow students to
   <li>Search by Registration Number</li>
 </ul>
 
-<h2>Sequence Diagram</h2>
+
+Sequence Diagram
 ![alt text](seq2.png)
