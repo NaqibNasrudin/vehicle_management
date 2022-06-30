@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
+        //scaffoldBackgroundColor: Colors.black,
       ),
       home: const MyHomePage(title: 'Vehicle Management'),
       routes: {
@@ -90,15 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            /*Padding(
-              padding: EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, Routes.retrieve);
-                },
-                child: const Text('Search Owner'),
-              ),
-            ),*/
             Image.asset(
               'assets/images/applogo.png'
             ),
