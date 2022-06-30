@@ -37,19 +37,20 @@ class _AdminRetrievePageState extends State<AdminRetrievePage> {
         var Room = data?['RoomNumber'];
         var Contact = data?['Contact'];
         var Model = data?['VehicleModel'];
-        _showDialog(Name,Contact,Model,Room,Matric);
+        var Report = data?['Report'];
+        _showDialog(Name,Contact,Model,Room,Matric,Report);
       }else{
         _showDialogError();
       }
   }
 
-  void _showDialog(var name,contact,model,room,matric) {
+  void _showDialog(var name,contact,model,room,matric,report) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: new Text("Owner's Information", textAlign: TextAlign.center),
-          content: new Text(' Name : $name \n Matric Number : $matric \n Room : $room \n Contact Number : $contact \n Vehicle Model : $model'),
+          content: new Text(' Name : $name \n Matric Number : $matric \n Room : $room \n Contact Number : $contact \n Vehicle Model : $model \n Report : $report'),
           actions: <Widget>[
             new ElevatedButton(
               child: new Text("Close"),
