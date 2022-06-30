@@ -64,24 +64,27 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
         'RoomNumber': _room, 
         'Contact': _phoneNo,
         'VehicleModel' : _model,
-      });
+      }
+      );
+      var status = 'Added Successfully!';
+      _showDialog(status);
     } catch (e) {
       print(e);
     }
   }
 
-  void _showDialog(var name1,name2) {
+  void _showDialog(var status) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: new Text("BMI Status", textAlign: TextAlign.center),
-          content: new Text(' First Name : $name1 \n Last Name : $name2'),
+          content: new Text(status),
           actions: <Widget>[
             new ElevatedButton(
               child: new Text("Close"),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.pushNamed(context, Routes.home);
               },
             ),
           ],
@@ -122,8 +125,8 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Name',
                     ),
@@ -136,10 +139,10 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
                       _setName(input);
                     },
                     keyboardType: TextInputType.text,
-                  ),
+                  )),
 
-                  const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Matric Number',
                     ),
@@ -152,10 +155,10 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
                       _setMatricNumber(input);
                     },
                     keyboardType: TextInputType.text,
-                  ),
+                  )),
 
-                  const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Room Number',
                     ),
@@ -168,10 +171,10 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
                       _setRoomNumber(input);
                     },
                     keyboardType: TextInputType.text,
-                  ),
+                  )),
 
-                  const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Phone Number',
                     ),
@@ -184,10 +187,10 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
                       _setPhoneNo(input);
                     },
                     keyboardType: TextInputType.number,
-                  ),
+                  )),
 
-                  const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Registration Number',
                     ),
@@ -200,10 +203,10 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
                       _setRegNo(input);
                     },
                     keyboardType: TextInputType.text,
-                  ),
+                  )),
 
-                  const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Model',
                     ),
@@ -216,7 +219,7 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
                       _setModel(input);
                     },
                     keyboardType: TextInputType.text,
-                  ),
+                  )),
                   Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: ElevatedButton(

@@ -31,9 +31,15 @@ class _ReportState extends State<Report> {
 
   void _update() async {
   try {
+    var info = firestore.collection('owners');
+    var docSnapshot = await info.doc(_regNo).get();
+    if (docSnapshot.exists){
     firestore.collection('owners').doc(_regNo).update({
       'Report': _report,
     });
+    }else{
+      print('No Data');
+    };
   } catch (e) {
     print(e);
   }
@@ -46,7 +52,7 @@ class _ReportState extends State<Report> {
           title: const Text('Register Vehicle'),
         ),
         body: Center(
-            child: Column(
+          child: Column(
           children: <Widget>[
             Form(
               key: _formKey,

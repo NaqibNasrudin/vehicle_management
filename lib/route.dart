@@ -10,4 +10,5 @@ class Routes{
   static const admin = '/admins';
   static const update = '/update';
   static const report = '/report';
+  static const verify = '/verify';
 }

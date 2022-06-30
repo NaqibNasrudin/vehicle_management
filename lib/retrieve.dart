@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:vehicle_management/route.dart';
 
 
 class RetrievePage extends StatefulWidget {
@@ -53,6 +54,16 @@ class _RetrievePageState extends State<RetrievePage> {
               child: new Text("Close"),
               onPressed: () {
                 Navigator.of(context).pop();
+              },
+            ),
+            new ElevatedButton(
+              child: new Text("Edit Info"),
+              onPressed: () {
+                Navigator.pushNamed(
+                  context, 
+                  Routes.verify,
+                  arguments: Vehicle(regno: id)
+                  );
               },
             ),
           ],
@@ -125,4 +136,12 @@ class _RetrievePageState extends State<RetrievePage> {
       ),
     );
   }
+}
+
+class Vehicle {
+  String regno;
+
+  Vehicle(
+      {required this.regno,}
+      );
 }

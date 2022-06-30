@@ -7,6 +7,7 @@ import 'package:vehicle_management/register.dart';
 import 'package:vehicle_management/report.dart';
 import 'package:vehicle_management/retrieve.dart';
 import 'package:vehicle_management/update.dart';
+import 'package:vehicle_management/verify.dart';
 import 'route.dart';
 
 void main() async {
@@ -36,12 +37,14 @@ class MyApp extends StatelessWidget {
       ),
       home: const MyHomePage(title: 'Vehicle Management'),
       routes: {
+        Routes.home: (context) => MyHomePage(title: 'Vehicle Management'),
         Routes.retrieve: (context) => RetrievePage(),
         Routes.newuser: (context) => RegisterVehicle(),
         Routes.login: (content) => LoginPage(),
         Routes.admin: (context) => AdminRetrievePage(),
         Routes.update:(context) => UpdateVehicle(),
         Routes.report:(context) => Report(),
+        Routes.verify:(context) => Verify(),
       },
     );
   }
@@ -102,16 +105,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, Routes.newuser);
                 },
                 child: const Text('Vehicle Registration'),
-              ),
-            ),
-
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, Routes.update);
-                },
-                child: const Text('Update'),
               ),
             ),
 

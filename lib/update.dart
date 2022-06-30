@@ -5,9 +5,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'route.dart';
+
+import 'package:flutter/material.dart';
 
 
 class UpdateVehicle extends StatefulWidget {
+  const UpdateVehicle({Key? key}) : super(key: key);
+
   @override
   _UpdateVehicleState createState() => _UpdateVehicleState();
 }
@@ -16,38 +21,62 @@ class _UpdateVehicleState extends State<UpdateVehicle> {
 
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final _formKey = GlobalKey<FormState>();
-  var id;
+  String _name = '';
+  String _phoneNo = '';
+  String _regNo = '';
+  String _model = '';
+  String _matric = '';
+  String _room = '';
 
-  void _setId(String text) {
+  void _setName(String name) {
     setState(() {
-      id = text;
+      _name = name;
     });
   }
 
-  void _read() async {
-    //DocumentSnapshot documentSnapshot;
-      //documentSnapshot = await firestore.collection('users').doc('JKU 7840').get();
-      //CollectionReference _collectionRef = FirebaseFirestore.instance.collection('users').doc('JTP 2939').get();
-      var info = firestore.collection('owners');
-      var docSnapshot = await info.doc(id).get();
-      if (docSnapshot.exists) {
-        Map<String, dynamic>? data = docSnapshot.data();
-        var Name = data?['Name'];
-        var Contact = data?['Contact'];
-        var Model = data?['VehicleModel'];
-        _showDialog(Name,Contact,Model);
-      }else{
-        _showDialogError();
-      }
+  void _setPhoneNo(String phoneNo) {
+    setState(() {
+      _phoneNo = phoneNo;
+    });
   }
 
-  void _showDialog(var name,contact,model) {
+  void _setRegNo(String regNo) {
+    _regNo = regNo;
+  }
+
+  void _setModel(String model) {
+    _model = model;
+  }
+
+  void _setMatricNumber(String text) {
+    _matric = text;
+  }
+
+  void _setRoomNumber(String text) {
+    _room = text;
+  }
+
+  void _create() async {
+    try {
+      await firestore.collection('owners').doc(_regNo).update({
+        'Name': _name,
+        'MatricNumber': _matric,
+        'RoomNumber': _room, 
+        'Contact': _phoneNo,
+        'VehicleModel' : _model,
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void _showDialog(var name1,name2) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("Owner's Information", textAlign: TextAlign.center),
-          content: new Text(' Name : $name \n Contact Number : $contact \n Vehicle Model : $model'),
+          title: new Text("BMI Status", textAlign: TextAlign.center),
+          content: new Text(' First Name : $name1 \n Last Name : $name2'),
           actions: <Widget>[
             new ElevatedButton(
               child: new Text("Close"),
@@ -60,14 +89,13 @@ class _UpdateVehicleState extends State<UpdateVehicle> {
       },
     );
   }
-
-  void _showDialogError() {
+  void _showDialogError(var status) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("Owner's Information", textAlign: TextAlign.center),
-          content: new Text('No Data Available'),
+          title: new Text("BMI Status", textAlign: TextAlign.center),
+          content: new Text(status),
           actions: <Widget>[
             new ElevatedButton(
               child: new Text("Close"),
@@ -80,49 +108,129 @@ class _UpdateVehicleState extends State<UpdateVehicle> {
       },
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Vehicle Management"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start, 
+        appBar: AppBar(
+          title: const Text('Register Vehicle'),
+        ),
+        body: Center(
+            child: Column(
           children: <Widget>[
-          Form(
-            key: _formKey,
+            Form(
+              key: _formKey,
               child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child:TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Plate Number'
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: 'Name',
                     ),
-                    onChanged: (text) {
-                      _setId(text);
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please input your name';
+                      }
                     },
-                  )
-                ),
-
-                Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: ElevatedButton(
-                    onPressed: (){
-                      _read();
+                    onChanged: (input) {
+                      _setName(input);
                     },
-                    child: const Text('Retrieve'),
-                  )
-                ),
+                    keyboardType: TextInputType.text,
+                  )),
 
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: 'Matric Number',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please input your matric number';
+                      }
+                    },
+                    onChanged: (input) {
+                      _setMatricNumber(input);
+                    },
+                    keyboardType: TextInputType.text,
+                  )),
+
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: 'Room Number',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please input your room number';
+                      }
+                    },
+                    onChanged: (input) {
+                      _setRoomNumber(input);
+                    },
+                    keyboardType: TextInputType.text,
+                  )),
+
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: 'Phone Number',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please input your phone number';
+                      }
+                    },
+                    onChanged: (input) {
+                      _setPhoneNo(input);
+                    },
+                    keyboardType: TextInputType.number,
+                  )),
+
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: 'Registration Number',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please input your vehicle registration number';
+                      }
+                    },
+                    onChanged: (input) {
+                      _setRegNo(input);
+                    },
+                    keyboardType: TextInputType.text,
+                  )),
+
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: 'Model',
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please input your car model';
+                      }
+                    },
+                    onChanged: (input) {
+                      _setModel(input);
+                    },
+                    keyboardType: TextInputType.text,
+                  )),
+                  Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            _create();
+                          }
+                        },
+                        child: const Text('Upload'),
+                      )),
                 ],
+              ),
             )
-          ),
-        ]),
-      ),
-    );
+          ],
+        )));
   }
 }
