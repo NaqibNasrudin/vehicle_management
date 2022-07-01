@@ -65,6 +65,7 @@ class _UpdateVehicleState extends State<UpdateVehicle> {
         'Contact': _phoneNo,
         'VehicleModel' : _model,
       });
+      Navigator.of(context).pop();
     } catch (e) {
       print(e);
     }

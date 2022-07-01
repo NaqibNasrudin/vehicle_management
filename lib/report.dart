@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:vehicle_management/route.dart';
+
 
 
 class Report extends StatefulWidget {
@@ -37,19 +39,24 @@ class _ReportState extends State<Report> {
     firestore.collection('owners').doc(_regNo).update({
       'Report': _report,
     });
+    Navigator.pushNamed(context, Routes.home);
     }else{
       print('No Data');
     };
+    
   } catch (e) {
     print(e);
   }
+
 }
+
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Register Vehicle'),
+          title: const Text('Report'),
         ),
         body: Center(
           child: Column(
@@ -71,22 +78,6 @@ class _ReportState extends State<Report> {
                     },
                     onChanged: (input) {
                       _setRegNo(input);
-                    },
-                    keyboardType: TextInputType.text,
-                  ),
-
-                  const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      hintText: 'Model',
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please input your car model';
-                      }
-                    },
-                    onChanged: (input) {
-                      _setModel(input);
                     },
                     keyboardType: TextInputType.text,
                   ),

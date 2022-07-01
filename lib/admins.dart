@@ -94,9 +94,11 @@ class _AdminRetrievePageState extends State<AdminRetrievePage> {
   void _delete() async{
     try {
       await firestore.collection('owners').doc(id).delete();
-      var status = 'Added Successfully!';
+      var status = 'Data successfully deleted !';
       _showDialogError(status);
-    }catch(e){
+      //Navigator.pushNamed(context, Routes.retrieve);
+    }
+    catch(e){
       print(e);
     }
 
