@@ -18,16 +18,16 @@ The objective of our application is to provide a platform that allow students to
 
 # Screen navigation & Implementation<br>
 Landing Page <br>
-![alt text](Landing Page.png)
+![alt text](LandingPage.png)
 
 Log In Page<br>
 ![alt text](login.png)
 
 Register Vehicle<br>
-![alt text](Register Vehicle.png)
+![alt text](RegisterVehicle.png)
 
 Vehicle Information<br>
-![alt text](Vehicle Information.png)
+![alt text](VehicleInformation.png)
 
 Report<br>
 ![alt text](Report1.png)
