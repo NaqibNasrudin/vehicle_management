@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+//import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:vehicle_management/add.dart';
 import 'package:vehicle_management/admins.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: 'Vehicle Management',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
+        primarySwatch: Colors.green,
         //scaffoldBackgroundColor: Colors.black,
       ),
       home: const MyHomePage(title: 'Vehicle Management'),

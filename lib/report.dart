@@ -85,8 +85,8 @@ void _showDialog(var status) {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
+                Padding(padding: EdgeInsets.all(20.0),
+                  child : TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Registration Number',
                     ),
@@ -99,13 +99,13 @@ void _showDialog(var status) {
                       _setRegNo(input);
                     },
                     keyboardType: TextInputType.text,
-                  ),
+                  )),
 
-                  const Padding(padding: EdgeInsets.all(10.0)),
-                  TextFormField(
+                  Padding(padding: EdgeInsets.all(20.0),
+                  child:TextFormField(
                     decoration: const InputDecoration(
                       hintText: 'Report',
-                      border: OutlineInputBorder()
+                      //border: OutlineInputBorder()
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -116,7 +116,7 @@ void _showDialog(var status) {
                       _setReport(input);
                     },
                     keyboardType: TextInputType.text,
-                  ),
+                  )),
 
                   Padding(
                       padding: const EdgeInsets.all(20.0),
@@ -126,7 +126,7 @@ void _showDialog(var status) {
                             _update();
                           }
                         },
-                        child: const Text('Submit'),
+                        child: const Text('SUBMIT'),
                       )),
                 ],
               ),
