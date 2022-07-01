@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:vehicle_management/route.dart';
 
 
 class AdminRetrievePage extends StatefulWidget {
@@ -40,7 +41,8 @@ class _AdminRetrievePageState extends State<AdminRetrievePage> {
         var Report = data?['Report'];
         _showDialog(Name,Contact,Model,Room,Matric,Report);
       }else{
-        _showDialogError();
+        var e = 'No data';
+        _showDialogError(e);
       }
   }
 
@@ -58,30 +60,46 @@ class _AdminRetrievePageState extends State<AdminRetrievePage> {
                 Navigator.of(context).pop();
               },
             ),
+            ElevatedButton( 
+             child: new Text("Delete"),
+             onPressed:(){
+              _delete();
+             })
           ],
         );
       },
     );
   }
 
-  void _showDialogError() {
+  void _showDialogError(String status) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: new Text("Owner's Information", textAlign: TextAlign.center),
-          content: new Text('No Data Available'),
+          content: new Text(status),
           actions: <Widget>[
             new ElevatedButton(
               child: new Text("Close"),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.pushNamed(context, Routes.admin);
               },
             ),
           ],
         );
       },
     );
+  }
+
+  void _delete() async{
+    try {
+      await firestore.collection('owners').doc(id).delete();
+      var status = 'Added Successfully!';
+      _showDialogError(status);
+    }catch(e){
+      print(e);
+    }
+
   }
 
   @override

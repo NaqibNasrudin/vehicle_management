@@ -75,7 +75,7 @@ class _UpdateVehicleState extends State<UpdateVehicle> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("BMI Status", textAlign: TextAlign.center),
+          title: new Text("Update Status", textAlign: TextAlign.center),
           content: new Text(' First Name : $name1 \n Last Name : $name2'),
           actions: <Widget>[
             new ElevatedButton(
@@ -94,7 +94,7 @@ class _UpdateVehicleState extends State<UpdateVehicle> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("BMI Status", textAlign: TextAlign.center),
+          title: new Text("Update Status", textAlign: TextAlign.center),
           content: new Text(status),
           actions: <Widget>[
             new ElevatedButton(

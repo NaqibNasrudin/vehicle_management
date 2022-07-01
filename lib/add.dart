@@ -78,7 +78,7 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("BMI Status", textAlign: TextAlign.center),
+          title: new Text("Registration Status", textAlign: TextAlign.center),
           content: new Text(status),
           actions: <Widget>[
             new ElevatedButton(
@@ -97,7 +97,7 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text("BMI Status", textAlign: TextAlign.center),
+          title: new Text("Registration Status", textAlign: TextAlign.center),
           content: new Text(status),
           actions: <Widget>[
             new ElevatedButton(

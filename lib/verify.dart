@@ -19,20 +19,20 @@ class _VerifyState extends State<Verify> {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   final _formKey = GlobalKey<FormState>();
-  var matricnum;
+  var _matricnum;
 
   void _setMatricnum(String text) {
     setState(() {
-      matricnum = text;
+      _matricnum = text;
     });
   }
   void verify(var no) async{
     var info = firestore.collection('owners');
-      var docSnapshot = await info.doc('JKU 7840').get();
+      var docSnapshot = await info.doc(no).get();
       if (docSnapshot.exists) {
         Map<String, dynamic>? data = docSnapshot.data();
         var mnum = data?['MatricNumber'];
-        if (mnum == matricnum) {
+        if (mnum == _matricnum) {
           Navigator.pushNamed(context, Routes.update);
         }else{
           String e = 'Wrong Matric Number....Access denied';
