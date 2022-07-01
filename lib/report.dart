@@ -39,7 +39,8 @@ class _ReportState extends State<Report> {
     firestore.collection('owners').doc(_regNo).update({
       'Report': _report,
     });
-    Navigator.pushNamed(context, Routes.home);
+    var success = 'Successfull';
+    _showDialog(success);
     }else{
       print('No Data');
     };
@@ -49,7 +50,25 @@ class _ReportState extends State<Report> {
   }
 
 }
-
+void _showDialog(var status) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text("Report Submitted", textAlign: TextAlign.center),
+          content: new Text(status),
+          actions: <Widget>[
+            new ElevatedButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
 
   @override

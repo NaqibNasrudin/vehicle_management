@@ -84,7 +84,7 @@ class _RegisterVehicleState extends State<RegisterVehicle> {
             new ElevatedButton(
               child: new Text("Close"),
               onPressed: () {
-                Navigator.pushNamed(context, Routes.home);
+                Navigator.of(context).pop();
               },
             ),
           ],
