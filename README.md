@@ -13,24 +13,24 @@ The objective of our application is to provide a platform that allow students to
   <li>CRUD Operation</li>
   <li>Admin Registration (MRC)</li>
   <li>Search by Registration Number</li>
-  <li>Camera plugins for report purpose</li>
+  <li>FlutterFire plugin</li>
 </ul>
 
 # Screen navigation & Implementation<br>
 Landing Page <br>
-![alt text](landing_mobile.png)
+![alt text](Landing Page.png)
 
 Log In Page<br>
 ![alt text](login.png)
 
 Register Vehicle<br>
-![alt text](vehicle_register.png)
+![alt text](Register Vehicle.png)
 
 Vehicle Information<br>
-![alt text](Vehicle_info.png)
+![alt text](Vehicle Information.png)
 
 Report<br>
-![alt text](report.png)
+![alt text](Report1.png)
 
 
 
