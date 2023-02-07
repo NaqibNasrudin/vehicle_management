@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-//import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:vehicle_management/add.dart';
 import 'package:vehicle_management/admins.dart';
@@ -95,29 +94,37 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+
+            Text('Hello'),
             Image.asset(
               'assets/images/applogo.png'
             ),
-            
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, Routes.newuser);
-                },
-                child: const Text('Vehicle Registration'),
-              ),
-            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: ElevatedButton(
+                      onPressed: (){
+                        Navigator.pushNamed(context, Routes.newuser);
+                      },
+                      child: const Text('Vehicle Registration'),
+                    ),
+                  ),
 
-            Padding(
-              padding: EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, Routes.report);
-                },
-                child: const Text('Report'),
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                    child: ElevatedButton(
+                      onPressed: (){
+                        Navigator.pushNamed(context, Routes.report);
+                      },
+                      child: const Text('Report'),
+                    ),
+                  ),
+                ],
               ),
-            ),
+            )
           ],
         ),
       ),
